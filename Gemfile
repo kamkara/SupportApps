@@ -25,7 +25,7 @@ gem 'jbuilder', '~> 2.7'
 
 ##################  Js ##################
 gem 'jquery-rails'
-
+gem 'sprockets-rails', '~> 3.2', '>= 3.2.2'
 
 ##################  STYLES ##################""
 gem 'tailwindcss'
@@ -33,6 +33,15 @@ gem 'bootstrap', '~> 5.0.0.beta2'
 
 ########### FORMS ###############
 gem 'bootstrap_form', '~> 4.5'
+
+
+################  URLS ################
+gem 'friendly_id', '~> 5.4', '>= 5.4.2'
+
+
+####################    MEMBERSHIP ######################
+gem 'devise', '~> 4.7', '>= 4.7.3'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
