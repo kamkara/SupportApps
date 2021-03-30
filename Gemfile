@@ -23,8 +23,14 @@ gem 'jbuilder', '~> 2.7'
 # gem 'bcrypt', '~> 3.1.7'
 
 
+##################  Js ##################
+gem 'jquery-rails'
+
+
 ##################  STYLES ##################""
 gem 'tailwindcss'
+gem 'bootstrap', '~> 5.0.0.beta2'
+
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
