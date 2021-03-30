@@ -31,7 +31,8 @@ gem 'jquery-rails'
 gem 'tailwindcss'
 gem 'bootstrap', '~> 5.0.0.beta2'
 
-
+########### FORMS ###############
+gem 'bootstrap_form', '~> 4.5'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
