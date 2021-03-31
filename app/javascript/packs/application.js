@@ -21,5 +21,3 @@ require("channels")
 // const imagePath = (name) => images(name, true)
 import "../css/application.css"
 
-// import sign up
-import "sign_up.js"
