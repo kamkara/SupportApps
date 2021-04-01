@@ -12,47 +12,35 @@ class User < ApplicationRecord
 
   ######### PRESENTES && FORMAT  ######
     validates :personal_id,
-              :last_name,
-              :first_name,
+              :full_name,
+              :nick_name,
               :email,
               :role, 
               :slug,
               presence: true
  
-    validates :last_name, :first_name,
+    validates :full_name, :nick_name,
                 length: { maximum: 30 },
               format: { with: /\A[^0-9`!@#\$%\^&*+_=]+\z/ }
 
 
 
-
-################  CUSTOM ACTIONS  ###########################
-
-def full_name
-  self.full_name = "#{self.first_name} #{self.last_name}"
-end
-
-############ SLUG ###########
-def slug
-  self.slug = self.full_name
-end
-
   extend FriendlyId
-    friendly_id :slug, use: :slugged
+    friendly_id :full_name, use: :slugged
 
   def should_generate_new_friendly_id?
-    slug_changed?
+    full_name_changed?
   end
 ################  BEFORE ACTIONS  ###########################
 #Delete whitespaces before and after fields, DownCase and capitalize
 before_save do
-  self.first_name         = first_name.strip.squeeze(" ").downcase.capitalize
-  self.last_name          = last_name.strip.squeeze(" ").downcase.capitalize
+  self.full_name         = full_name.strip.squeeze(" ").downcase.capitalize
+  self.nick_name          = nick_name.strip.squeeze(" ").downcase.capitalize
 end
 
 
 ################  CONSTANTE   ###########################
-ROLE        = ["student", "teacher", "Admin"]
+ROLE = ["Support", "Direction", "Admin"]
 
 
 ################  SIGN IN PHONE NUMBR OR EMAIL  ###########################

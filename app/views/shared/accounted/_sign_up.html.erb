@@ -1,0 +1,78 @@
+<!-- component -->
+<div class="flex justify-center h-screen items-center">
+    <div class='flex max-w-sm w-full  justify-center bg-white shadow-md rounded-lg overflow-hidden mx-auto flex flex-col p-5'>
+        <h3 class="text-2xl font-bold mb-4">Ouverture de Compte</h3>
+    <!-- This is the input component -->
+    <!-- sign up form -->
+    <%= bootstrap_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
+        <div class="relative input-component mb-2">
+            <%= f.text_field :full_name, 
+                class:"h-full w-full border-gray-300 px-2 transition-all border-blue rounded-sm",
+                hide_label: true, placeholder:"Kone Yanick" %>
+            <label for="name" class="absolute left-2 transition-all bg-white px-1">
+                Nom Complet
+            </label>
+        </div>
+        <div class="relative input-component mb-5">
+            <%= f.text_field :nick_name, 
+                class:"h-full w-full border-gray-300 px-2 transition-all border-blue rounded-sm",
+                hide_label: true, placeholder:"Yanick" %>
+            <label for="name" class="absolute left-2 transition-all bg-white px-1">
+                Nom interne
+            </label>
+        </div>
+        <div class="relative input-component mb-2">
+            <%= f.text_field :personal_id, 
+                class:"h-full w-full border-gray-300 px-2 transition-all border-blue rounded-sm",
+                hide_label: true, placeholder:"054 432 G" %>
+            <label for="name" class="absolute left-2 transition-all bg-white px-1">
+                Identifiant Yup
+            </label>
+        </div>
+        <div class="relative input-component mb-2">
+            <%= f.email_field :email, 
+                class:"h-full w-full border-gray-300 px-2 transition-all border-blue rounded-sm",
+                hide_label: true %>
+            <label for="name" class="absolute left-2 transition-all bg-white px-1">
+                Adresse Email
+            </label>
+        </div>
+
+        <div class="relative input-component mb-5">
+            <%= f.select :role, User::ROLE, hide_label: true,
+            wrapper: { class: "h-full w-full border-gray-300 px-2 transition-all border-blue rounded-sm"} %>
+            <label for="role" class="absolute left-2 transition-all bg-white px-1">
+                Votre Role
+            </label>
+        </div>
+
+        <!-- password section-->
+        <div class="relative input-component mb-2">
+        <%= f.password_field :password, hide_label: true,
+            class:"h-full w-full border-gray-300 px-2 transition-all rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300", 
+            help:"Mot de passe doit avoir plus de 8 caractères.",
+            placeholder:"********" %>
+             <label for="passwword" class="absolute left-2 transition-all bg-white px-1">
+                Mot de passe
+            </label>
+        </div>
+
+        <!-- Passwword confirm -->
+        <div class="relative input-component mb-5">
+        <%= f.password_field :password_confirmation,
+            hide_label: true, class:"h-full w-full border-gray-300 px-2 transition-all border border-gray-300 rounded-sm focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300",
+            placeholder:"********" %> 
+             <label for="password_confirmation" class="absolute left-2 transition-all bg-white px-1">
+                Retapez votre Mot de passe
+            </label>
+        </div>
+
+        <div class="inline-block mr-2 mt-2">
+            <%= f.submit "Ouvrir Mon Compte", class:"focus:outline-none text-white text-sm py-2.5 px-5 rounded-md
+             bg-red-500 hover:bg-red-500 hover:shadow-lg flex items-center" %>
+        </div>    
+    <% end %>
+    
+
+ 
