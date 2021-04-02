@@ -4,6 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :trackable, authentication_keys: [:login]
 
+  ########### UNIQUENESS  ######
+  has_many :tickets
 
   ########### UNIQUENESS  ######
     validates :email,
