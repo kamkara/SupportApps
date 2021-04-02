@@ -3,7 +3,7 @@ class CreateTickets < ActiveRecord::Migration[6.0]
     create_table :tickets, id: :uuid do |t|
       t.string :title
       t.string :full_name
-      t.string :c
+      t.string :service
       t.string :montant
       t.date :operation
       t.integer :ref_operation
@@ -11,7 +11,7 @@ class CreateTickets < ActiveRecord::Migration[6.0]
       t.text :description
       t.integer :contact
       t.string :slug
-      t.reference :user
+      t.references :user, null: false, foreign_key: true, type: :uuid
 
       t.timestamps
     end
