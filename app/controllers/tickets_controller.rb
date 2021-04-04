@@ -1,4 +1,5 @@
 class TicketsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_ticket, only: %i[ show edit update destroy ]
 
   # GET /tickets or /tickets.json
@@ -21,7 +22,8 @@ class TicketsController < ApplicationController
 
   # POST /tickets or /tickets.json
   def create
-    @ticket = Ticket.new(ticket_params)
+    @ticket = current_user.tickets.build(ticket_params)
+    @ticket.author  = current_user.full_name 
 
     respond_to do |format|
       if @ticket.save
@@ -59,11 +61,11 @@ class TicketsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_ticket
-      @ticket = Ticket.find(params[:id])
+      @ticket = Ticket.friendly.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
     def ticket_params
-      params.require(:ticket).permit(:title, :full_name, :service, :montant, :operation, :ref_operation, :ref_facturier, :description, :contact, :slug, :user)
+      params.require(:ticket).permit(:title, :full_name, :service, :author, :montant, :operation, :ref_operation, :ref_facturier, :description, :contact, :slug, :user)
     end
 end

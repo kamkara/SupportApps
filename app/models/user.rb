@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :trackable, authentication_keys: [:login]
 
-  ########### UNIQUENESS  ######
+  ########### RELATIONS  ######
   has_many :tickets
 
   ########### UNIQUENESS  ######
@@ -15,10 +15,8 @@ class User < ApplicationRecord
   ######### PRESENTES && FORMAT  ######
     validates :personal_id,
               :full_name,
-              :nick_name,
-              :email,
-              :role, 
-              :slug,
+              :nick_name,:email,
+              :role,:slug,
               presence: true
  
     validates :full_name, :nick_name,
