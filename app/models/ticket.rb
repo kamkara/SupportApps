@@ -4,28 +4,28 @@ class Ticket < ApplicationRecord
   belongs_to :user
     
   ########### TITLE ASSIGMEMENT  ######
-  def title_builder
-      if self.service === "ACHAT AIRTIME"
+  def title
+      if self.service == "ACHAT AIRTIME"
           self.title = "ACHAT AIRTIME"
-      elsif self.service === "TICKET HKB"
+      elsif self.service == "TICKET HKB"
           self.title = "ACHAT HKB"
-      elsif self.service === "TICKET CANAL"
+      elsif self.service == "TICKET CANAL"
           self.title = "ACHAT CANAL"
-      elsif self.service === "CIE PREPAYER"
+      elsif self.service == "CIE PREPAYER"
           self.title = "CIE PREPAYER"
-      elsif self.service === "SODECI"
+      elsif self.service == "SODECI"
           self.title = " SODECI"
-      elsif self.service === "RETRAIT GAB"
+      elsif self.service == "RETRAIT GAB"
           self.title = " RETRAIT GAB"
       end
   end
   
-  before_save :title_builder
 
   ########### UNIQUENESS  ######
     validates :ref_operation,
               :ref_facturier,
-               uniqueness: true, length: {minimum:8, maximum:14}
+              uniqueness: true,
+              length: {maximum:14}
 
   ######### PRESENTES && FORMAT  ######
     validates :ref_operation, :ref_facturier,
@@ -39,7 +39,7 @@ class Ticket < ApplicationRecord
                 length: { maximum: 30 },
               format: { with: /\A[^0-9`!@#\$%\^&*+_=]+\z/ }
 
-    validates :contact, length: {minimum:10, maximum:14 }
+    validates :contact, length: {maximum:14 }
 
               
   ################  CONSTANTE   ###########################
