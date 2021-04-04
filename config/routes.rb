@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   
 
   resources :tickets
-  root to:'tickets#index'
+  root to:'home#index'
 
 
   devise_for :users, controllers: { registrations: 'users/registrations' }
