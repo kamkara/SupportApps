@@ -6,16 +6,28 @@ class Ticket < ApplicationRecord
   
   
   ######## BUILD TITLE AND SLUG ##################
-  def title
-    if self.service == "AIRTIME"
-      self.title   = "Reclamation sur Airtime" 
-      self.slug    = self.title
-    end
-  end
   
-  def slug
-  end
   ######## VALIDATIONS #################
+######### PRESENTES && FORMAT  ######
+  #CAS PARTICULIER 
+  #:id_transaction,
+  #:id_facturier
+  
+  validates :title, :custom_name,:contact, 
+              :service, :operation, :amount,
+              :content, :slug, :author,
+                presence: true
+
+    validates :custom_name,
+              length: { maximum: 100 },
+              format: { with: /\A[^0-9`!@#\$%\^&*+_=]+\z/ }
+    validates :title, :content,
+              length: { maximum: 700 }
+
+    validates :contact, 
+                length: { in: 10..14},
+              numericality: { only_integer: true },
+               uniqueness: true
 
   ######## TYPE SERVICE #################
   TYPE_SERVICE = ["AIRTIME", "HKB", "CANAL", "CIE PREPAYE", "SODECI", "RETRAIT GAB"]
