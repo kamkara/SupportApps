@@ -1,326 +1,120 @@
 <!-- component -->
 <div class="container">
-	<h1 class="mb-8">
-    Scrollable Table Fixed Height
-  </h1>
+	 
+        <!-- content navigation -->
+        <nav class="bg-gray-100 flex ">
+          <!-- open tickets nav -->
+          <section aria-labelledby="open-tickets-tabs-label" class="mr-4 focus:outline-none">
+            <label id="open-tickets-tabs-label" class="font-semibold block mb-1 text-sm">Tickets Ouvert
+              <span class="font-normal text-gray-700">(En cours)</span>
+            </label>
+            <ul class="flex">
+              <li>
+                <button class="focus:outline-none focus:bg-yellow-200 p-2 rounded-l-md border border-r-0 bg-white flex flex-col items-center w-24">
+                  <p class="font-semibold text-lg">6</p>
+                  <p class="text-sm uppercase text-gray-600">
+                    <%= truncate(current_user.nick_name, length: 1) %>
+                  </p>
+                </button>
+              </li>
+              <li>
+                <button class="focus:outline-none focus:bg-yellow-200 p-2 border rounded-r-md bg-white flex flex-col items-center w-24 cursor-pointer">
+                  <p class="font-semibold text-lg">23</p>
+                  <p class="text-sm uppercase text-gray-600">
+                    Créer
+                  </p>
+                </button>
+              </li>
+            </ul>
+          </section>
+          <!-- stats nav -->
+          <section aria-labelledby="ticket-statistics-tabs-label" class="pb-2">
+            <label id="ticket-statistics-tabs-label" class="font-semibold block mb-1 text-sm">Statistiques Tickets
+              <span class="font-normal text-gray-700">(Mois)</span></label>
+            <ul class="flex">
+              <li>
+                <button class="focus:outline-none focus:bg-yellow-200 p-2 rounded-l-md border border-r-0 bg-white flex flex-col items-center w-24">
+                  <p class="font-semibold text-lg">16</p>
+                  <p class="uppercase text-gray-600 text-sm">
+                    Bon
+                  </p>
+                </button>
+              </li>
+              <li>
+                <button class="focus:outline-none focus:bg-yellow-200 p-2 border border-r-0 bg-white flex flex-col items-center w-24">
+                  <p class="font-semibold text-lg">2</p>
+                  <p class="uppercase text-gray-600 text-sm">
+                    Faible
+                  </p>
+                </button>
+              </li>
 
-	<table class="text-left w-full">
-		<thead class="bg-black flex text-white w-full">
-			<tr class="flex w-full mb-4">
-				<th class="p-4 w-1/4">One</th>
-				<th class="p-4 w-1/4">Two</th>
-				<th class="p-4 w-1/4">Three</th>
-				<th class="p-4 w-1/4">Four</th>
+              <li>
+                <button class="focus:outline-none focus:bg-yellow-200 p-2 border rounded-r-md bg-white flex flex-col items-center w-24">
+                  <p class="font-semibold text-lg">32</p>
+                  <p class="uppercase text-gray-600 text-sm">
+                    Resolu
+                  </p>
+                </button>
+              </li>
+            </ul>
+          </section>
+        </nav>
+
+	<table class=" bg-white shadow-md text-left w-full">
+		<thead class="bg-red-500 flex text-white w-full">
+			<tr class="flex w-full">
+				<th class="p-2 w-1/5">Tickets</th>
+				<th class="p-2 w-1/5">Clients</th>
+				<th class="p-2 w-1/5">Support</th>
+				<th class="p-2 w-1/5">Service</th>
+				<th class="p-2 w-1/5">Actions</th>
 			</tr>
 		</thead>
     <!-- Remove the nasty inline CSS fixed height on production and replace it with a CSS class — this is just for demonstration purposes! -->
 		<tbody class="bg-grey-light flex flex-col items-center justify-between overflow-y-scroll w-full" style="height: 50vh;">
-			<tr class="flex w-full mb-4">
-				<td class="p-4 w-1/4">Dogs</td>
-				<td class="p-4 w-1/4">Cats</td>
-				<td class="p-4 w-1/4">Birds</td>
-				<td class="p-4 w-1/4">Fish</td>
+			<!---->
+			<% @tickets.each do |ticket| %>
+			
+			<tr class=" border-b border-gray-200 hover:bg-gray-100 flex w-full mb-2">
+				<td class="p-2 w-1/5 font-medium"><%= truncate(ticket.title, length: 30) %></td>
+				<td class="p-2 w-1/5"><%= truncate(ticket.custom_name, length: 30) %></td>
+				<td class="p-2 w-1/5"><%= truncate(ticket.author, length: 30) %></td>
+				<td class="p-2 w-1/5"><%= ticket.service %></td>
+				<td class="p-2 w-1/5">
+				<!-- Show ticket -->
+					<div class="flex item-center justify-center">
+
+					<%= link_to ticket do %>
+                    	<div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                            </svg>
+                        </div>
+					<% end %>
+				<!-- Edit ticket-->
+                    <%= link_to edit_ticket_path(ticket) do %>
+						<div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                            </svg>
+                        </div>
+                    <% end %>
+				<!-- Delete ticket-->
+					<%= link_to ticket, method: :delete, data: { confirm: 'Supprimez definitivement ?' } do %>
+						<div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                            </svg>
+                        </div>
+                    
+					<% end %>
+					</div>
+				</td>
 			</tr>
-			<tr class="flex w-full mb-4">
-				<td class="p-4 w-1/4">Dogs</td>
-				<td class="p-4 w-1/4">Cats</td>
-				<td class="p-4 w-1/4">Birds</td>
-				<td class="p-4 w-1/4">Fish</td>
-			</tr>
-			<tr class="flex w-full mb-4">
-				<td class="p-4 w-1/4">Dogs</td>
-				<td class="p-4 w-1/4">Cats</td>
-				<td class="p-4 w-1/4">Birds</td>
-				<td class="p-4 w-1/4">Fish</td>
-			</tr>
-			<tr class="flex w-full mb-4">
-				<td class="p-4 w-1/4">Dogs</td>
-				<td class="p-4 w-1/4">Cats</td>
-				<td class="p-4 w-1/4">Birds</td>
-				<td class="p-4 w-1/4">Fish</td>
-			</tr>
-			<tr class="flex w-full mb-4">
-				<td class="p-4 w-1/4">Dogs</td>
-				<td class="p-4 w-1/4">Cats</td>
-				<td class="p-4 w-1/4">Birds</td>
-				<td class="p-4 w-1/4">Fish</td>
-			</tr>
-			<tr class="flex w-full mb-4">
-				<td class="p-4 w-1/4">Dogs</td>
-				<td class="p-4 w-1/4">Cats</td>
-				<td class="p-4 w-1/4">Birds</td>
-				<td class="p-4 w-1/4">Fish</td>
-			</tr>
-			<tr class="flex w-full mb-4">
-				<td class="p-4 w-1/4">Dogs</td>
-				<td class="p-4 w-1/4">Cats</td>
-				<td class="p-4 w-1/4">Birds</td>
-				<td class="p-4 w-1/4">Fish</td>
-			</tr>
-			<tr class="flex w-full mb-4">
-				<td class="p-4 w-1/4">Dogs</td>
-				<td class="p-4 w-1/4">Cats</td>
-				<td class="p-4 w-1/4">Birds</td>
-				<td class="p-4 w-1/4">Fish</td>
-			</tr>
-			<tr class="flex w-full mb-4">
-				<td class="p-4 w-1/4">Dogs</td>
-				<td class="p-4 w-1/4">Cats</td>
-				<td class="p-4 w-1/4">Birds</td>
-				<td class="p-4 w-1/4">Fish</td>
-			</tr>
-			<tr class="flex w-full mb-4">
-				<td class="p-4 w-1/4">Dogs</td>
-				<td class="p-4 w-1/4">Cats</td>
-				<td class="p-4 w-1/4">Birds</td>
-				<td class="p-4 w-1/4">Fish</td>
-			</tr>
-			<tr class="flex w-full mb-4">
-				<td class="p-4 w-1/4">Dogs</td>
-				<td class="p-4 w-1/4">Cats</td>
-				<td class="p-4 w-1/4">Birds</td>
-				<td class="p-4 w-1/4">Fish</td>
-			</tr>
-			<tr class="flex w-full mb-4">
-				<td class="p-4 w-1/4">Dogs</td>
-				<td class="p-4 w-1/4">Cats</td>
-				<td class="p-4 w-1/4">Birds</td>
-				<td class="p-4 w-1/4">Fish</td>
-			</tr>
-			<tr class="flex w-full mb-4">
-				<td class="p-4 w-1/4">Dogs</td>
-				<td class="p-4 w-1/4">Cats</td>
-				<td class="p-4 w-1/4">Birds</td>
-				<td class="p-4 w-1/4">Fish</td>
-			</tr>
-			<tr class="flex w-full mb-4">
-				<td class="p-4 w-1/4">Dogs</td>
-				<td class="p-4 w-1/4">Cats</td>
-				<td class="p-4 w-1/4">Birds</td>
-				<td class="p-4 w-1/4">Fish</td>
-			</tr>
-			<tr class="flex w-full mb-4">
-				<td class="p-4 w-1/4">Dogs</td>
-				<td class="p-4 w-1/4">Cats</td>
-				<td class="p-4 w-1/4">Birds</td>
-				<td class="p-4 w-1/4">Fish</td>
-			</tr>
-			<tr class="flex w-full mb-4">
-				<td class="p-4 w-1/4">Dogs</td>
-				<td class="p-4 w-1/4">Cats</td>
-				<td class="p-4 w-1/4">Birds</td>
-				<td class="p-4 w-1/4">Fish</td>
-			</tr>
-			<tr class="flex w-full mb-4">
-				<td class="p-4 w-1/4">Dogs</td>
-				<td class="p-4 w-1/4">Cats</td>
-				<td class="p-4 w-1/4">Birds</td>
-				<td class="p-4 w-1/4">Fish</td>
-			</tr>
-			<tr class="flex w-full mb-4">
-				<td class="p-4 w-1/4">Dogs</td>
-				<td class="p-4 w-1/4">Cats</td>
-				<td class="p-4 w-1/4">Birds</td>
-				<td class="p-4 w-1/4">Fish</td>
-			</tr>
-			<tr class="flex w-full mb-4">
-				<td class="p-4 w-1/4">Dogs</td>
-				<td class="p-4 w-1/4">Cats</td>
-				<td class="p-4 w-1/4">Birds</td>
-				<td class="p-4 w-1/4">Fish</td>
-			</tr>
-			<tr class="flex w-full mb-4">
-				<td class="p-4 w-1/4">Dogs</td>
-				<td class="p-4 w-1/4">Cats</td>
-				<td class="p-4 w-1/4">Birds</td>
-				<td class="p-4 w-1/4">Fish</td>
-			</tr>
-			<tr class="flex w-full mb-4">
-				<td class="p-4 w-1/4">Dogs</td>
-				<td class="p-4 w-1/4">Cats</td>
-				<td class="p-4 w-1/4">Birds</td>
-				<td class="p-4 w-1/4">Fish</td>
-			</tr>
-			<tr class="flex w-full mb-4">
-				<td class="p-4 w-1/4">Dogs</td>
-				<td class="p-4 w-1/4">Cats</td>
-				<td class="p-4 w-1/4">Birds</td>
-				<td class="p-4 w-1/4">Fish</td>
-			</tr>
-			<tr class="flex w-full mb-4">
-				<td class="p-4 w-1/4">Dogs</td>
-				<td class="p-4 w-1/4">Cats</td>
-				<td class="p-4 w-1/4">Birds</td>
-				<td class="p-4 w-1/4">Fish</td>
-			</tr>
-			<tr class="flex w-full mb-4">
-				<td class="p-4 w-1/4">Dogs</td>
-				<td class="p-4 w-1/4">Cats</td>
-				<td class="p-4 w-1/4">Birds</td>
-				<td class="p-4 w-1/4">Fish</td>
-			</tr>
-			<tr class="flex w-full mb-4">
-				<td class="p-4 w-1/4">Dogs</td>
-				<td class="p-4 w-1/4">Cats</td>
-				<td class="p-4 w-1/4">Birds</td>
-				<td class="p-4 w-1/4">Fish</td>
-			</tr>
-			<tr class="flex w-full mb-4">
-				<td class="p-4 w-1/4">Dogs</td>
-				<td class="p-4 w-1/4">Cats</td>
-				<td class="p-4 w-1/4">Birds</td>
-				<td class="p-4 w-1/4">Fish</td>
-			</tr>
-			<tr class="flex w-full mb-4">
-				<td class="p-4 w-1/4">Dogs</td>
-				<td class="p-4 w-1/4">Cats</td>
-				<td class="p-4 w-1/4">Birds</td>
-				<td class="p-4 w-1/4">Fish</td>
-			</tr>
-			<tr class="flex w-full mb-4">
-				<td class="p-4 w-1/4">Dogs</td>
-				<td class="p-4 w-1/4">Cats</td>
-				<td class="p-4 w-1/4">Birds</td>
-				<td class="p-4 w-1/4">Fish</td>
-			</tr>
-			<tr class="flex w-full mb-4">
-				<td class="p-4 w-1/4">Dogs</td>
-				<td class="p-4 w-1/4">Cats</td>
-				<td class="p-4 w-1/4">Birds</td>
-				<td class="p-4 w-1/4">Fish</td>
-			</tr>
-			<tr class="flex w-full mb-4">
-				<td class="p-4 w-1/4">Dogs</td>
-				<td class="p-4 w-1/4">Cats</td>
-				<td class="p-4 w-1/4">Birds</td>
-				<td class="p-4 w-1/4">Fish</td>
-			</tr>
-			<tr class="flex w-full mb-4">
-				<td class="p-4 w-1/4">Dogs</td>
-				<td class="p-4 w-1/4">Cats</td>
-				<td class="p-4 w-1/4">Birds</td>
-				<td class="p-4 w-1/4">Fish</td>
-			</tr>
-			<tr class="flex w-full mb-4">
-				<td class="p-4 w-1/4">Dogs</td>
-				<td class="p-4 w-1/4">Cats</td>
-				<td class="p-4 w-1/4">Birds</td>
-				<td class="p-4 w-1/4">Fish</td>
-			</tr>
-			<tr class="flex w-full mb-4">
-				<td class="p-4 w-1/4">Dogs</td>
-				<td class="p-4 w-1/4">Cats</td>
-				<td class="p-4 w-1/4">Birds</td>
-				<td class="p-4 w-1/4">Fish</td>
-			</tr>
-			<tr class="flex w-full mb-4">
-				<td class="p-4 w-1/4">Dogs</td>
-				<td class="p-4 w-1/4">Cats</td>
-				<td class="p-4 w-1/4">Birds</td>
-				<td class="p-4 w-1/4">Fish</td>
-			</tr>
-			<tr class="flex w-full mb-4">
-				<td class="p-4 w-1/4">Dogs</td>
-				<td class="p-4 w-1/4">Cats</td>
-				<td class="p-4 w-1/4">Birds</td>
-				<td class="p-4 w-1/4">Fish</td>
-			</tr>
-			<tr class="flex w-full mb-4">
-				<td class="p-4 w-1/4">Dogs</td>
-				<td class="p-4 w-1/4">Cats</td>
-				<td class="p-4 w-1/4">Birds</td>
-				<td class="p-4 w-1/4">Fish</td>
-			</tr>
-			<tr class="flex w-full mb-4">
-				<td class="p-4 w-1/4">Dogs</td>
-				<td class="p-4 w-1/4">Cats</td>
-				<td class="p-4 w-1/4">Birds</td>
-				<td class="p-4 w-1/4">Fish</td>
-			</tr>
-			<tr class="flex w-full mb-4">
-				<td class="p-4 w-1/4">Dogs</td>
-				<td class="p-4 w-1/4">Cats</td>
-				<td class="p-4 w-1/4">Birds</td>
-				<td class="p-4 w-1/4">Fish</td>
-			</tr>
-			<tr class="flex w-full mb-4">
-				<td class="p-4 w-1/4">Dogs</td>
-				<td class="p-4 w-1/4">Cats</td>
-				<td class="p-4 w-1/4">Birds</td>
-				<td class="p-4 w-1/4">Fish</td>
-			</tr>
-			<tr class="flex w-full mb-4">
-				<td class="p-4 w-1/4">Dogs</td>
-				<td class="p-4 w-1/4">Cats</td>
-				<td class="p-4 w-1/4">Birds</td>
-				<td class="p-4 w-1/4">Fish</td>
-			</tr>
-			<tr class="flex w-full mb-4">
-				<td class="p-4 w-1/4">Dogs</td>
-				<td class="p-4 w-1/4">Cats</td>
-				<td class="p-4 w-1/4">Birds</td>
-				<td class="p-4 w-1/4">Fish</td>
-			</tr>
-			<tr class="flex w-full mb-4">
-				<td class="p-4 w-1/4">Dogs</td>
-				<td class="p-4 w-1/4">Cats</td>
-				<td class="p-4 w-1/4">Birds</td>
-				<td class="p-4 w-1/4">Fish</td>
-			</tr>
-			<tr class="flex w-full mb-4">
-				<td class="p-4 w-1/4">Dogs</td>
-				<td class="p-4 w-1/4">Cats</td>
-				<td class="p-4 w-1/4">Birds</td>
-				<td class="p-4 w-1/4">Fish</td>
-			</tr>
-			<tr class="flex w-full mb-4">
-				<td class="p-4 w-1/4">Dogs</td>
-				<td class="p-4 w-1/4">Cats</td>
-				<td class="p-4 w-1/4">Birds</td>
-				<td class="p-4 w-1/4">Fish</td>
-			</tr>
-			<tr class="flex w-full mb-4">
-				<td class="p-4 w-1/4">Dogs</td>
-				<td class="p-4 w-1/4">Cats</td>
-				<td class="p-4 w-1/4">Birds</td>
-				<td class="p-4 w-1/4">Fish</td>
-			</tr>
-			<tr class="flex w-full mb-4">
-				<td class="p-4 w-1/4">Dogs</td>
-				<td class="p-4 w-1/4">Cats</td>
-				<td class="p-4 w-1/4">Birds</td>
-				<td class="p-4 w-1/4">Fish</td>
-			</tr>
-			<tr class="flex w-full mb-4">
-				<td class="p-4 w-1/4">Dogs</td>
-				<td class="p-4 w-1/4">Cats</td>
-				<td class="p-4 w-1/4">Birds</td>
-				<td class="p-4 w-1/4">Fish</td>
-			</tr>
-			<tr class="flex w-full mb-4">
-				<td class="p-4 w-1/4">Dogs</td>
-				<td class="p-4 w-1/4">Cats</td>
-				<td class="p-4 w-1/4">Birds</td>
-				<td class="p-4 w-1/4">Fish</td>
-			</tr>
-          	<tr class="flex w-full mb-4">
-				<td class="p-4 w-1/4">Dogs</td>
-				<td class="p-4 w-1/4">Cats</td>
-				<td class="p-4 w-1/4">Birds</td>
-				<td class="p-4 w-1/4">Fish</td>
-			</tr>
-          	<tr class="flex w-full mb-4">
-				<td class="p-4 w-1/4">Dogs</td>
-				<td class="p-4 w-1/4">Cats</td>
-				<td class="p-4 w-1/4">Birds</td>
-				<td class="p-4 w-1/4">Fish</td>
-			</tr>
-          	<tr class="flex w-full mb-4">
-				<td class="p-4 w-1/4">Dogs</td>
-				<td class="p-4 w-1/4">Cats</td>
-				<td class="p-4 w-1/4">Birds</td>
-				<td class="p-4 w-1/4">Fish</td>
-			</tr>
+			
+			<% end %>
 		</tbody>
 	</table>
 </div>
