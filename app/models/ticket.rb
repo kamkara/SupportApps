@@ -26,8 +26,9 @@ class Ticket < ApplicationRecord
 
     validates :contact, 
                 length: { in: 10..14},
-              numericality: { only_integer: true },
-               uniqueness: true
+              numericality: { only_integer: true }
+
+    validates :id_transaction, :id_facturier ,uniqueness: true
 
   ######## TYPE SERVICE #################
   TYPE_SERVICE = ["AIRTIME", "HKB", "CANAL", "CIE PREPAYE", "SODECI", "RETRAIT GAB"]
