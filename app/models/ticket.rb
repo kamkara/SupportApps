@@ -28,6 +28,7 @@ class Ticket < ApplicationRecord
                 length: { in: 10..14},
               numericality: { only_integer: true }
 
+
     validates :id_transaction, :id_facturier ,uniqueness: true
 
   ######## TYPE SERVICE #################
