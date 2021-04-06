@@ -1,0 +1,64 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @ticket.title %>
+</p>
+
+<p>
+  <strong>Custom name:</strong>
+  <%= @ticket.custom_name %>
+</p>
+
+<p>
+  <strong>Contact:</strong>
+  <%= @ticket.contact %>
+</p>
+
+<p>
+  <strong>Service:</strong>
+  <%= @ticket.service %>
+</p>
+
+<p>
+  <strong>Operation:</strong>
+  <%= @ticket.operation %>
+</p>
+
+<p>
+  <strong>Amount:</strong>
+  <%= @ticket.amount %>
+</p>
+
+<p>
+  <strong>Id transaction:</strong>
+  <%= @ticket.id_transaction %>
+</p>
+
+<p>
+  <strong>Id facturier:</strong>
+  <%= @ticket.id_facturier %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @ticket.content %>
+</p>
+
+<p>
+  <strong>Slug:</strong>
+  <%= @ticket.slug %>
+</p>
+
+<p>
+  <strong>Author:</strong>
+  <%= @ticket.author %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @ticket.user_id %>
+</p>
+
+<%= link_to 'Edit', edit_ticket_path(@ticket) %> |
+<%= link_to 'Back', tickets_path %>

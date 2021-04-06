@@ -1,0 +1,120 @@
+<div class="container m-12">
+  <%= form_with(model: ticket, local: true) do |f| %>
+    <% if ticket.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(ticket.errors.count, "error") %> prohibited this ticket from being saved:</h2>
+
+        <ul>
+          <% ticket.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <!-- ticket fields-->
+    <!-- component -->
+    <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col my-2">
+      <div class="md:w-full px-3">
+        <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid-password">
+          titre
+        </label>
+        <p class="text-red text-xs italic"> Le titre de la reclamation.</p>
+        <%= f.text_field :title, 
+        class:"appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter 
+        rounded py-2 px-4 mb-3", placeholder:"Tapez le titre." %>
+      </div>
+
+      <div class="-mx-3 md:flex mb-6">
+        <div class="md:w-1/2 px-3 mb-6 md:mb-0">
+          <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid-first-name">
+            Nom Client
+          </label>
+          <p class="text-red text-xs italic"> Le nom du client.</p>
+          <%= f.text_field :custom_name, placeholder:"kamate kara",
+          class:"appearance-none block w-full bg-grey-lighter text-grey-darker
+            border border-red rounded py-2 px-4 mb-3", id:"grid-first-name" %>
+          
+        </div>
+        <div class="md:w-1/2 px-3">
+          <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid-last-name">
+            Contact
+          </label>
+          <p class="text-red text-xs italic"> Le contact du client.</p>
+          <%= f.text_field :contact, placeholder:"05 44 32 00 20", 
+          class:"appearance-none block w-full bg-grey-lighter text-grey-darker 
+          border border-grey-lighter rounded py-2 px-4", id:"grid-last-name" %>
+        </div>
+      </div>
+
+      <div class="-mx-3 md:flex mb-2">
+        <div class="md:w-1/2 px-3 mb-6 md:mb-0">
+          <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid-city">
+            Date Opération
+          </label>
+          <%= f.date_select :operation,
+          class:"appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter
+            rounded py-2 px-4", id:"grid-operation" %>
+        </div>
+        <div class="md:w-1/2 px-3">
+          <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid-state">
+            Service
+          </label>
+          <div class="relative">
+            <%= f.select :service, Ticket::TYPE_SERVICE,
+            class:"block appearance-none w-full bg-grey-lighter border border-grey-lighter text-grey-darker
+              py-2 px-4 pr-8 rounded", id:"grid-state" %>
+          </div>
+        </div>
+        <div class="md:w-1/2 px-3">
+          <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid-zip">
+            Montant
+          </label>
+          <p class="text-red text-xs italic"> Le montant de la transaction.</p>
+          <%= f.text_field :amount,
+          class:"appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter
+            rounded py-2 px-4", id:"grid-zip", placeholder:"25 000fr" %>
+        </div>
+      </div>
+
+    <!-- component -->
+    
+      <div class="-mx-3 md:flex mb-6">
+        <div class="md:w-1/2 px-3 mb-6 md:mb-0">
+          <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid-first-name">
+            Transaction
+          </label>
+          <p class="text-red text-xs italic"> La reference de la transaction.</p>
+          <%= f.text_field :id_transaction, placeholder:"0544320020-fk",
+          class:"appearance-none block w-full bg-grey-lighter text-grey-darker
+            border border-red rounded py-2 px-4 mb-3", id:"grid-id-transation" %>
+        </div>
+        <div class="md:w-1/2 px-3">
+          <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid-last-name">
+            Facturier
+          </label>
+          <p class="text-red text-xs italic"> La reference du facturier.</p>
+          <%= f.text_field :id_facturier, placeholder:"0544320020", 
+          class:"appearance-none block w-full bg-grey-lighter text-grey-darker 
+          border border-grey-lighter rounded py-2 px-4" %>
+        </div>
+      </div>
+    
+
+  
+    <div class="md:w-full px-3">
+      <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid-password">
+        Resumé
+      </label>
+      <p class="text-grey-dark text-xs italic">Faites-le aussi court et aussi clair que vous le souhaitez 50 mots.</p>
+      <%= f.text_area :content, 
+      class:"appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter 
+      rounded py-3 px-4 mb-3", placeholder:"Tapez le resumé." %>
+    </div>
+
+    <div class="">
+      <%= f.submit "Créer Ticket",
+      class:"shadow bg-red-500 hover:bg-red-400 focus:shadow-outline
+        focus:outline-none text-white font-bold py-2 px-4 rounded" %>
+    </div>
+  <% end %>
+</div>
