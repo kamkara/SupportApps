@@ -72,10 +72,18 @@
                 aria-orientation="vertical"
                 aria-label="user menu"
               >
-                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem"
-                  >Profil</a>
-                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Parametres</a>
-                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Se Deconnecte</a>
+                <%= link_to edit_user_registration_path(@user),  
+                  class:"block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100", role:"menuitem" do %>
+                  <span>Profil</span>
+                <% end %>
+                <%= link_to edit_user_registration_path(@user),  
+                  class:"block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100", role:"menuitem" do %>
+                  <span>Administration</span>
+                <% end %>
+                <%= link_to users_sign_out_path,  
+                  class:"block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100", role:"menuitem" do %>
+                  <span>Se Deconnecte</span>
+                <% end %>
               </div>
             </div>
           </nav>
@@ -180,9 +188,18 @@
                 aria-orientation="vertical"
                 aria-label="user menu"
               >
-                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Votre Profil</a>
-                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Parametres</a>
-                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Se Déconnectez</a>
+                 <%= link_to edit_user_registration_path(@user),  
+                  class:"block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100", role:"menuitem" do %>
+                  <span>Votre Profil</span>
+                <% end %>
+                <%= link_to edit_user_registration_path(@user),  
+                  class:"block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100", role:"menuitem" do %>
+                  <span>Administration</span>
+                <% end %>
+                <%= link_to users_sign_out_path,  
+                  class:"block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100", role:"menuitem" do %>
+                  <span>Se Deconnecte</span>
+                <% end %>
               </div>
             </div>
           </nav>
@@ -249,7 +266,7 @@
                       />
                     </svg>
                   </span>
-                  <span>Reclamation</span>
+                  <span>Export (hebdo)</span>
                 <% end %>
                 
                 
@@ -264,7 +281,7 @@
                     src="https://raw.githubusercontent.com/kamona-ui/dashboard-alpine/52b4b4abb92ef251f6610be416038b48209d7a81/public/assets/images/undraw_web_developer_p3e5.svg"
                   />
                   <p class="text-sm text-indigo-600">
-                    Vous pouvez<span class="text-base text-indigo-700er"> exporté</span> toutes les reclamations! <br />
+                    Vous pouvez<span class="text-base text-indigo-700er"> exporter</span> toutes les reclamations! <br />
                   </p>
                   <button
                     class="w-full px-4 py-2 text-center text-white transition-colors bg-red-600 rounded-lg
@@ -325,7 +342,7 @@
         x-transition:leave-start="translate-x-0"
         x-transition:leave-end="translate-x-full"
         x-show="isSettingsPanelOpen"
-        class="fixed inset-y-0 right-0 w-1/4 bg-white border-l border-indigo-100 rounded-l-3xl">
+        class="fixed inset-y-0 right-0 w-1/5 bg-white border-l border-indigo-100 rounded-l-3xl">
         <div class="px-4 py-8">
           <h1 class="text-3xl font-semibold text-gray-700">Créer Ticket</h1>
         </div>

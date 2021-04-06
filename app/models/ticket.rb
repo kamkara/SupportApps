@@ -32,7 +32,7 @@ class Ticket < ApplicationRecord
     validates :id_transaction, :id_facturier ,uniqueness: true
 
   ######## TYPE SERVICE #################
-  TYPE_SERVICE = ["AIRTIME", "HKB", "CANAL", "CIE PREPAYE", "SODECI", "RETRAIT GAB"]
+  TYPE_SERVICE = ["AIRTIME MOOV", "AIRTIME MTN", "AIRTIME ORANGE", "HKB", "CANAL", "CIE PREPAYE", "SODECI", "RETRAIT GAB"]
 
 
 ######## SLUGGED ##################
