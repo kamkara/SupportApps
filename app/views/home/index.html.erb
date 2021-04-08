@@ -2,6 +2,8 @@
 <% if user_signed_in? %>
   <%= render "logged_in" %>
 <% else %>
+<!-- Home feed -onglet Msg -->
+<% content_for @title= "YAS" %>
     <%= render "logged_up" %>
 <% end %>
 
