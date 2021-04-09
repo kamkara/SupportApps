@@ -35,6 +35,9 @@ gem 'bootstrap', '~> 5.0.0.beta2'
 gem 'bootstrap_form', '~> 4.5'
 
 
+################  EXPORTS ################
+gem 'csv_shaper', '~> 1.3', '>= 1.3.2'
+
 ################  URLS ################
 gem 'friendly_id', '~> 5.4', '>= 5.4.2'
 
