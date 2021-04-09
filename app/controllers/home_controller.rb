@@ -9,24 +9,5 @@ class HomeController < ApplicationController
     
   end
 
-  #export all record
-  def export_all
-  end
-
-  # Daily export
-  def export_daily
-    
-  end
-  
-  #weekly export
-  def export_weekly
-    @weeklyTickets = Ticket.where('created = ?', 1.week).order(created_at: :desc)
-    
-  end
-  #Monthly export
-  def export_monthly
-    @monthlyTickets = Ticket.where('created = ?', 1.month).order(created_at: :desc)
-     
-   end
   
 end
