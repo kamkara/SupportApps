@@ -1,0 +1,149 @@
+ <nav x-show="currentSidebarTab == 'linksTab'" aria-label="Main" class="flex flex-col h-full">
+    <!-- Logo -->
+    <div class="flex items-center justify-center flex-shrink-0 py-10">
+        <a href="#">
+            <span class="w-24 text-3xl text-red-600 font-semibold"/>Yup App Support</span>
+        </a>
+    </div>
+
+    <!-- Links -->
+    <div class="flex-1 px-4 space-y-2 overflow-hidden hover:overflow-auto">
+        <%= link_to root_path, class:"flex items-center w-full space-x-2 text-white bg-red-600 rounded-lg" do %>
+            <span aria-hidden="true" class="p-2 bg-red-700 rounded-lg">
+                <svg
+                      class="w-6 h-6"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+                      />
+                </svg>
+            </span>
+            <span class="font-semibold">Accueil</span>
+        <% end %>
+                <a
+                  href="#"
+                  class="flex items-center space-x-2 text-indigo-600 transition-colors rounded-lg group hover:bg-indigo-600 hover:text-white"
+                >
+                  <span
+                    aria-hidden="true"
+                    class="p-2 transition-colors rounded-lg group-hover:bg-indigo-700 group-hover:text-white"
+                  >
+                    <svg
+                      class="w-6 h-6"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"
+                      />
+                    </svg>
+                  </span>
+                  <span>Export Quot</span>
+                </a>
+                <a
+                  href="#"
+                  class="flex items-center space-x-2 text-indigo-600 transition-colors rounded-lg group hover:bg-indigo-600 hover:text-white"
+                >
+                  <span
+                    aria-hidden="true"
+                    class="p-2 transition-colors rounded-lg group-hover:bg-indigo-700 group-hover:text-white"
+                  >
+                    <svg
+                      class="w-6 h-6"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"
+                      />
+                    </svg>
+                  </span>
+                  <span>Export Hebdo</span>
+                </a>
+                <a
+                  href="#"
+                  class="flex items-center space-x-2 text-indigo-600 transition-colors rounded-lg group hover:bg-indigo-600 hover:text-white"
+                >
+                  <span
+                    aria-hidden="true"
+                    class="p-2 transition-colors rounded-lg group-hover:bg-indigo-700 group-hover:text-white"
+                  >
+                    <svg
+                      class="w-6 h-6"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"
+                      />
+                    </svg>
+                  </span>
+                  <span>Export Mensuel</span>
+                </a>
+                <a
+                  href="#"
+                  class="flex items-center space-x-2 text-indigo-600 transition-colors rounded-lg group hover:bg-indigo-600 hover:text-white"
+                >
+                <span
+                    aria-hidden="true"
+                    class="p-2 transition-colors rounded-lg group-hover:bg-indigo-700 group-hover:text-white"
+                  >
+                    <svg
+                      class="w-6 h-6"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"
+                      />
+                    </svg>
+                </span>
+                 <span>Export Trimes</span>
+            </a>
+        </div>
+
+        <div class="flex-shrink-0 p-4 mt-10">
+            <div class="hidden p-2 space-y-6 bg-gray-100 rounded-lg md:block">
+                  
+                <p class="text-sm text-indigo-600">
+                    Vous pouvez <span class="text-base text-indigo-700er">Exporter</span> tous les tickets! <br />
+                </p>
+            <button
+                class="w-full px-4 py-2 text-center text-white transition-colors bg-indigo-600 rounded-lg hover:bg-indigo-700 focus:outline-none focus:ring focus:ring-indigo-600 focus:ring-offset-2 focus:ring-offset-gray-100"
+                  >
+                Export Total
+            </button>
+        </div>
+
+        <button class="w-full px-4 py-2 text-center text-white transition-colors bg-indigo-600 rounded-lg md:hidden hover:bg-indigo-700 focus:outline-none focus:ring focus:ring-indigo-600 focus:ring-offset-2 focus:ring-offset-gray-100">
+            Export Total
+        </button>
+    </div>
+</nav>
