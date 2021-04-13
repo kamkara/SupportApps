@@ -3,6 +3,10 @@ class HomesController < ApplicationController
 
   def index
     @tickets = Ticket.all.order(created_at: :desc)
+  end
+  
+  def all_ticket
+    @all_tickets = Ticket.all.order(created_at: :desc)
       respond_to_xlsx_format
   end
   

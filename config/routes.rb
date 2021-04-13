@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get 'homes/weekly'
   get 'homes/monthly'
   get 'homes/quarterly'
-
+  get 'homes/all_ticket'
 
   devise_for :users, controllers: { registrations: 'users/registrations' }
 
