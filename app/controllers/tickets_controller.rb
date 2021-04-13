@@ -65,6 +65,8 @@ class TicketsController < ApplicationController
       @ticket = Ticket.friendly.find(params[:id])
     end
 
+    
+
     # Only allow a list of trusted parameters through.
     def ticket_params
       params.require(:ticket).permit(:title, :custom_name, :contact, :service, :operation, :amount, :id_transaction, :id_facturier, :content, :slug, :author, :user_id)
