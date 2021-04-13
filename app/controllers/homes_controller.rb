@@ -1,6 +1,8 @@
 class HomesController < ApplicationController
+  before_action :respond_format_xlsx
   def index
-    @tickets = Ticket.all.order('created_at desc')
+    @tickets = Ticket.all.order(created_at: :desc)
+    respond_format_xlsx
   end
   
   def daily
@@ -18,5 +20,6 @@ class HomesController < ApplicationController
   def quarterly
     
   end
+  private
   
 end
