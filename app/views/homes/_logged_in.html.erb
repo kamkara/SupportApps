@@ -247,7 +247,8 @@
                   </span>
                   <span>Accueil</span>
                 <% end %>
-            <%= link_to homes_daily_path,
+  
+            <%= link_to homes_daily_path(frrmat: :xlsx),
                  class:"flex items-center space-x-2 text-red-600 transition-colors rounded-lg group hover:bg-red-600 hover:text-white" do %>
             <span
                 aria-hidden="true"
