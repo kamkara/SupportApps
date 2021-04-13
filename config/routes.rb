@@ -2,7 +2,11 @@ Rails.application.routes.draw do
   
 
   resources :tickets
-  root to:'home#index'
+  root to:'homes#index'
+  get 'homes/daily'
+  get 'homes/weekly'
+  get 'homes/monthly'
+  get 'homes/quarterly'
 
 
   devise_for :users, controllers: { registrations: 'users/registrations' }
