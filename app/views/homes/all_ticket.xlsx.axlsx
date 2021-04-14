@@ -1,8 +1,9 @@
+
 workbook = xlsx_package.workbook
 
-#add stle to headers
+#add style to headers
 workbook.styles do |style|
-    project_heading = style.add_style(b: true, sz:14 )
+    project_heading = style.add_style(b: true, sz:12 )
     heading = style.add_style(b: true)
 
 
@@ -11,8 +12,8 @@ workbook.styles do |style|
             sheet.add_row ["Ticket YUP", Time.now.strftime("%b %-d, %Y")], style: project_heading
 
         # Create the header row
-        sheet.add_row ["Sujet", "Nom Client", "Contact Client", "Type Service",
-         "Date Opération", " Montant", "Ref Transcation", "Ref Facturier", "contenu",
+        sheet.add_row ["Sujet", "Nom Client", "Contact", "Service",
+         "Opération", " Montant", "Transcation", "Facturier", "Contenu",
           "support" ], style: project_heading
           
         # Create entries for each item ticket

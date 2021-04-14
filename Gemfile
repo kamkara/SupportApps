@@ -41,6 +41,8 @@ gem 'friendly_id', '~> 5.4', '>= 5.4.2'
 ################  EXPORTS Excel ################
 gem 'caxlsx'
 gem 'caxlsx_rails'
+
+
 ####################    MEMBERSHIP ######################
 gem 'devise', '~> 4.7', '>= 4.7.3'
 

@@ -1,5 +1,5 @@
 class HomesController < ApplicationController
-  
+  before_action :respond_to_xlsx_format, only: %i[ daily weekly monthly quarterly]
 
   def index
     @homeIndexTickets = Ticket.all.order(created_at: :desc)
@@ -7,11 +7,18 @@ class HomesController < ApplicationController
   
   def all_ticket
     @all_tickets = Ticket.all.order(created_at: :desc)
-      respond_to_xlsx_format
+    respond_to do |format|
+      format.xlsx
+      format.html{ render :index }
+    end
   end
   
   def daily
-    
+    @daily_tickets = Ticket.where(created_at => 1.day.ago..Time.now).order(created_at: :desc)
+    respond_to do |format|
+      format.xlsx
+      format.html{ render :index }
+    end
   end
 
   def weekly
