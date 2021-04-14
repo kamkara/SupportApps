@@ -1,3 +1,6 @@
+<!-- Home feed -onglet Msg -->
+<% content_for @title= "Ajout de ticket" %>
+
 <div class="container m-12">
   <%= form_with(model: ticket, local: true) do |f| %>
     <% if ticket.errors.any? %>

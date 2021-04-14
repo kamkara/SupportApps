@@ -1,0 +1,24 @@
+
+workbook = xlsx_package.workbook
+
+#add style to headers
+workbook.styles do |style|
+    project_heading = style.add_style(b: true, sz:12 )
+    heading = style.add_style(b: true)
+
+
+    workbook.add_worksheet(name: "Tickets") do |sheet|
+         # Add a title row and downloaded date
+            sheet.add_row [" ","Ticket YUP -#{Time.now.strftime("%b %-d, %Y")}" ], style: project_heading
+
+        # Create the header row
+        sheet.add_row ["Sujet", "Nom Client", "Contact", "Service",
+         "Opération", " Montant", "Transcation", "Facturier","Support", "Contenu"], style: project_heading
+          
+        # Create entries for each item ticket
+        @quarterly_tickets.each do |ticket|
+            sheet.add_row [ticket.title, ticket.custom_name, ticket.contact, ticket.service, ticket.operation, ticket.amount, ticket.id_transaction,  ticket.id_facturier, ticket.author, ticket.content]
+        end
+    end
+end
+
