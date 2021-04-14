@@ -31,7 +31,7 @@
                   <span>Accueil</span>
                 <% end %>
   
-            <%= link_to homes_daily_path(frrmat: :xlsx),
+            <%= link_to homes_daily_path(format: :xlsx),
                  class:"flex items-center space-x-2 text-red-600 transition-colors rounded-lg group hover:bg-red-600 hover:text-white" do %>
             <span
                 aria-hidden="true"
@@ -53,7 +53,7 @@
             </span>
             <span class='font-semibold'>Export Quotidien</span>
         <% end %>            
-            <%= link_to homes_weekly_path,
+            <%= link_to homes_weekly_path(format: :xlsx),
                  class:"flex items-center space-x-2 text-red-600 transition-colors rounded-lg group hover:bg-red-600 hover:text-white" do %>
             <span
                 aria-hidden="true"
@@ -75,7 +75,7 @@
             </span>
             <span class='font-semibold'>Export Hebdo</span>
         <% end %>            
-            <%= link_to homes_monthly_path,
+            <%= link_to homes_monthly_path(format: :xlsx),
                  class:"flex items-center space-x-2 text-red-600 transition-colors rounded-lg group hover:bg-red-600 hover:text-white" do %>
             <span
                 aria-hidden="true"
@@ -96,8 +96,9 @@
                 </svg>
             </span>
             <span class='font-semibold'>Export Mensuel</span>
-        <% end %>            
-            <%= link_to homes_quarterly_path,
+        <% end %> 
+                   
+            <%= link_to homes_quarterly_path(format: :xlsx),
                  class:" mb-2 flex items-center space-x-2 text-red-600 transition-colors rounded-lg group hover:bg-red-600 hover:text-white" do %>
             <span
                 aria-hidden="true"
