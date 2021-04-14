@@ -8,8 +8,8 @@ workbook.styles do |style|
 
 
     workbook.add_worksheet(name: "Tickets") do |sheet|
-         # Add a title row and downloaded date
-            sheet.add_row ["Ticket YUP", Time.now.strftime("%b %-d, %Y")], style: project_heading
+        # Add a title row and downloaded date
+            sheet.add_row [" ","Ticket YUP -#{Time.now.strftime("%b %-d, %Y")}" ], style: project_heading
 
         # Create the header row
         sheet.add_row ["Sujet", "Nom Client", "Contact", "Service",
@@ -17,7 +17,7 @@ workbook.styles do |style|
           
         # Create entries for each item ticket
         @daily_tickets.each do |ticket|
-            sheet.add_row [ticket.title, ticket.custom_name, ticket.contact, ticket.service, ticket.operation, ticket.amount, ticket.id_transaction,  ticket.id_facturier, ticket.content, ticket.author]
+            sheet.add_row [ticket.title, ticket.custom_name, ticket.contact, ticket.service, ticket.operation, ticket.amount, ticket.id_transaction,  ticket.id_facturier, ticket.author, ticket.content]
         end
     end
 end
