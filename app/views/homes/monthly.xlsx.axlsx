@@ -1,23 +1,27 @@
 
 workbook = xlsx_package.workbook
+   
 
 #add style to headers
 workbook.styles do |style|
-    project_heading = style.add_style(b: true, sz:12 )
+    project_heading_message =style.add_style(b:true, sz:12, alignment: { horizontal: :center})
+    project_heading = style.add_style(b: true, sz:12, bg_color: 'EF4444', alignment: { horizontal: :center }  )
     heading = style.add_style(b: true)
 
 
-    workbook.add_worksheet(name: "Tickets") do |sheet|
+    workbook.add_worksheet(name: "YUP Ticket Mensuel") do |sheet|
         # Add a title row and downloaded date
-            sheet.add_row [" ","Ticket YUP -#{Time.now.strftime("%b %-d, %Y")}" ], style: project_heading
+            sheet.add_row [" ","Ticket YUP -#{Time.now.strftime("%b %-d, %Y")}" ], style: project_heading_message
 
         # Create the header row
-        sheet.add_row ["Sujet", "Nom Client", "Contact", "Service",
-         "Opération", " Montant", "Transcation", "Facturier","Support", "Contenu"], style: project_heading
+        sheet.add_row ["Titre", "Nom Client", "Date Transaction", "Date Saisir Reclamation", "Compte Yup", "Service",
+         "Id Facturier", "Ref Transaction", "Montant", "Description", "support" ], style: project_heading
           
         # Create entries for each item ticket
         @monthly_tickets.each do |ticket|
-            sheet.add_row [ticket.title, ticket.custom_name, ticket.contact, ticket.service, ticket.operation, ticket.amount, ticket.id_transaction,  ticket.id_facturier,  ticket.author, ticket.content]
+            sheet.add_row [ticket.title, ticket.custom_name, ticket.operation, ticket.created_at,
+             ticket.contact, ticket.service, ticket.id_facturier, ticket.id_transaction, ticket.amount,
+              ticket.content, ticket.author],  style: Axlsx::STYLE_THIN_BORDER
         end
     end
 end
