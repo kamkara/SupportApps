@@ -5,6 +5,7 @@ class CreateTickets < ActiveRecord::Migration[6.0]
       t.string :full_name
       t.string :service
       t.string :montant
+      t.string :author
       t.date :operation
       t.integer :ref_operation
       t.integer :ref_facturier

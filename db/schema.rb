@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 2021_04_02_104221) do
     t.string "full_name"
     t.string "service"
     t.string "montant"
+    t.string "author"
     t.date "operation"
     t.integer "ref_operation"
     t.integer "ref_facturier"
@@ -41,7 +42,6 @@ ActiveRecord::Schema.define(version: 2021_04_02_104221) do
     t.uuid "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "author"
     t.index ["user_id"], name: "index_tickets_on_user_id"
   end
 
