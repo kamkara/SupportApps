@@ -32,6 +32,8 @@ ActiveRecord::Schema.define(version: 2021_04_04_211108) do
     t.string "custom_name"
     t.string "contact"
     t.string "service"
+    t.string "montant"
+    t.string "author"
     t.date "operation"
     t.string "amount"
     t.string "id_transaction"
